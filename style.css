@@ -52,7 +52,6 @@ body {
     width: 75%;
     height: 50vh;
     padding: 10%;
-    /* background-image: url("Worlds_Edge.png"); */
 }
 
 .container .interval {
@@ -99,7 +98,7 @@ footer {
         margin-top: 10px;
     }
     .card {
-        width: 85%;
+        width: 90%;
         height: 40vh;
     }
 }

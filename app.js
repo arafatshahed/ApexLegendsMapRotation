@@ -1,21 +1,23 @@
-function getBRImageName(t1){
-    t1 = t1.slice(0, (t1.length-9));
+function getBRImageName(t1) {
+    t1 = t1.slice(0, (t1.length - 9));
     var i = t1.indexOf("_") + 1;
-    const t2 = t1.charAt(0).toUpperCase() + t1.slice(1, i) + t1.charAt(i).toUpperCase() + t1.slice(i+1, t1.length)+".png";
-    var t3 = "https://apexlegendsstatus.com//assets//maps//"+t2;
-    return t3;
+    const t2 = "/images/assets/" + t1.charAt(0).toUpperCase() + t1.slice(1, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
+    //var t3 = "https://apexlegendsstatus.com//assets//maps//" + t2;
+    return t2;
 }
-function getARImageName(t1){
+
+function getARImageName(t1) {
     t1 = t1.replaceAll(' ', '_');
     var i = t1.indexOf("_") + 1;
-    const ts = "Arena_" + t1.slice(0, i) + t1.charAt(i).toUpperCase() + t1.slice(i+1, t1.length)+".png";
+    const ts = "/images/assets/" + "Arena_" + t1.slice(0, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
 
 
     console.log(ts)
-    var t3 = "https://apexlegendsstatus.com//assets//maps//"+ts;
-    return t3;
+        //var t3 = "https://apexlegendsstatus.com//assets//maps//"+ts;
+    return ts;
 }
-function getTime(s1, s2){
+
+function getTime(s1, s2) {
     s1 = s1.slice(10, 16);
     s2 = s2.slice(10, 16);
     var rs = "From " + s1 + " To " + s2 + " UTC.";
@@ -28,6 +30,8 @@ async function getMapApi() {
     const jsFormatData = await jsonFormatData.json();
     document.getElementById("cbr").innerHTML = jsFormatData.battle_royale.current.map;
     document.getElementById("cbrRem").innerHTML = jsFormatData.battle_royale.current.remainingTimer;
+    var nbrImage = getBRImageName(jsFormatData.battle_royale.next.code);
+    document.getElementById("nextBR").style.backgroundImage = "url(" + nbrImage + ")";
     document.getElementById("currBR").style.backgroundImage = "url(" + jsFormatData.battle_royale.current.asset + ")";
     var rs = getTime(jsFormatData.battle_royale.current.readableDate_start, jsFormatData.battle_royale.current.readableDate_end);
     document.getElementById("cbrTime").innerHTML = rs;
@@ -65,6 +69,6 @@ async function getMapApi() {
     document.getElementById("nextArRank").style.backgroundImage = "url(" + narImage + ")";
     var rs = getTime(jsFormatData.arenasRanked.next.readableDate_start, jsFormatData.arenasRanked.next.readableDate_end);
     document.getElementById("narrTime").innerHTML = rs;
-    
+
 }
 setInterval(getMapApi, 1000)
