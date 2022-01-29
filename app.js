@@ -1,7 +1,7 @@
 function getBRImageName(t1) {
     t1 = t1.slice(0, (t1.length - 9));
     var i = t1.indexOf("_") + 1;
-    const t2 = "/images/assets/" + t1.charAt(0).toUpperCase() + t1.slice(1, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
+    const t2 = "https://arafatshahed.github.io/ApexLegendsMapRotation/images/assets/" + t1.charAt(0).toUpperCase() + t1.slice(1, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
     //var t3 = "https://apexlegendsstatus.com//assets//maps//" + t2;
     return t2;
 }
