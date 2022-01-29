@@ -1,0 +1,20 @@
+{
+  "name": "Apex Legends Map Rotation",
+  "short_name": "Apex Map Rotation",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#24252a",
+  "description": "This PWA let you know the current Map rotation of Apex Legends.",
+  "icons": [
+    {
+      "src": "images/homescreen512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "images/homescreen192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
