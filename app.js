@@ -43,7 +43,7 @@ function setCurrentBRRankMap(jsFormatData) {
     document.getElementById("brRank").innerHTML = jsFormatData.ranked.current.map;
     var cbrImage = jsFormatData.ranked.current.map;
     cbrImage = cbrImage.replaceAll(' ', '_');
-    const t1 = "/images/assets/" + cbrImage + ".jpg";
+    const t1 = "https://arafatshahed.github.io/ApexLegendsMapRotation/images/assets/" + cbrImage + ".jpg";
     document.getElementById("rankBR").style.backgroundImage = "url(" + t1 + ")";
 }
 
