@@ -10,7 +10,7 @@ body {
 
 .container {
     display: grid;
-    padding: 0% 10% 10% 10%;
+    padding: 0 5vw 1vh 5vw;
 }
 
 .container p {
@@ -20,7 +20,7 @@ body {
 }
 
 #myhead {
-    padding-top: 2vh;
+    margin-top: 2vh;
 }
 
 .container h1 {
@@ -50,7 +50,7 @@ body {
     margin: 10px;
     border-radius: 5%;
     width: 75%;
-    height: 50vh;
+    height: 30vh;
     padding: 10%;
 }
 
@@ -94,11 +94,11 @@ footer {
     .myprofile button {
         width: 20%;
     }
-    .container h1 {
-        margin-top: 10px;
+    .container {
+        margin-right: 5vw;
+        margin-left: 5vw;
     }
     .card {
         width: 90%;
-        height: 40vh;
     }
 }
