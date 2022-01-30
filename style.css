@@ -25,7 +25,8 @@ body {
 
 #myhead {
     margin-top: 2vh;
-    font-size: 2.5rem
+    font-size: 2.5rem;
+    font-family: 'Secular One', sans-serif;
 }
 
 .container h1 {

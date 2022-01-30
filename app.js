@@ -1,10 +1,12 @@
 var host = "https://arafatshahed.github.io/ApexLegendsMapRotation/images/assets/";
+var ar = 0,
+    brc = 0,
+    arr = 0;
 
 function getBRImageName(t1) {
     t1 = t1.slice(0, (t1.length - 9));
     var i = t1.indexOf("_") + 1;
     const t2 = host + t1.charAt(0).toUpperCase() + t1.slice(1, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
-    //var t3 = "https://apexlegendsstatus.com//assets//maps//" + t2;
     return t2;
 }
 
@@ -25,7 +27,7 @@ function getTime(s1, s2) {
 }
 
 function setCurrentBRMap(jsFormatData) {
-    console.log(jsFormatData)
+    console.log("setCurrentBRMap");
     document.getElementById("cbr").innerHTML = jsFormatData.battle_royale.current.map;
     var cbrImage = getBRImageName(jsFormatData.battle_royale.current.code);
     document.getElementById("currBR").style.backgroundImage = "url(" + cbrImage + ")";
@@ -81,31 +83,56 @@ function setNextArenaRankedMap(jsFormatData) {
     document.getElementById("narrTime").innerHTML = rs;
 }
 
-async function getMapApi() {
-    const jsonFormatData = await fetch(
-        "https://api.mozambiquehe.re/maprotation?version=2&auth=6lfxuOGGI4GDqmSdHvqw"
-    );
-    jsFormatData = await jsonFormatData.json();
-
-    document.getElementById("cbrRem").innerHTML = jsFormatData.battle_royale.current.remainingTimer;
-    if (jsFormatData.battle_royale.current.remainingSecs == 0 || jsFormatData.battle_royale.current.DurationInSecs - jsFormatData.battle_royale.current.remainingSecs < 5) {
+function updateRem(jsFormatData) {
+    console.log(brc)
+    var brcRem = new Date(brc * 1000).toISOString().substr(11, 8);
+    document.getElementById("cbrRem").innerHTML = brcRem;
+    if (brc == 0) { // || jsFormatData.battle_royale.current.DurationInSecs - brc < 5
         setCurrentBRMap(jsFormatData);
         setNextBRMap(jsFormatData);
+        getDataFromApi();
     }
-    document.getElementById("carRem").innerHTML = jsFormatData.arenas.current.remainingTimer;
-    if (jsFormatData.arenas.current.remainingSecs == 0 || jsFormatData.arenas.current.DurationInSecs - jsFormatData.arenas.current.remainingSecs < 5) {
+    brc -= 1;
+    var arRem = new Date(ar * 1000).toISOString().substr(11, 8);
+    document.getElementById("carRem").innerHTML = arRem;
+    if (ar == 0) { // || jsFormatData.arenas.current.DurationInSecs - ar < 5
         setCurrentArenaMap(jsFormatData);
         setNextArenaMap(jsFormatData);
+        getDataFromApi();
     }
-    document.getElementById("carrRem").innerHTML = jsFormatData.arenasRanked.current.remainingTimer;
-    if (jsFormatData.arenasRanked.current.remainingSecs == 0 || jsFormatData.arenasRanked.current.DurationInSecs - jsFormatData.arenasRanked.current.remainingSecs < 5) {
+    ar -= 1;
+    var arrRem = new Date(arr * 1000).toISOString().substr(11, 8);
+    document.getElementById("carrRem").innerHTML = arrRem;
+    if (arr == 0) { // || jsFormatData.arenasRanked.current.DurationInSecs - arr < 5
         setCurrentArenaRankedMap(jsFormatData);
         setNextArenaRankedMap(jsFormatData);
+        getDataFromApi();
     }
+    arr -= 1;
+
+}
+
+
+
+async function getMapApi() {
+    const jsonFormatData = await fetch(
+        "https://api.mozambiquehe.re/maprotation?version=5&auth=6lfxuOGGI4GDqmSdHvqw"
+    );
+    jsFormatData = await jsonFormatData.json();
+    brc = jsFormatData.battle_royale.current.remainingSecs;
+    ar = jsFormatData.arenas.current.remainingSecs;
+    arr = jsFormatData.arenasRanked.current.remainingSecs;
+    setInterval(updateRem, 1000, jsFormatData);
+    console.log("getMapApi");
+    if (brc == 0 || jsFormatData.battle_royale.current.DurationInSecs - brc < 5) {
+
+        getMapApi();
+    }
+
 }
 async function getDataFromApi() {
     const jsonFormatData = await fetch(
-        "https://api.mozambiquehe.re/maprotation?version=2&auth=6lfxuOGGI4GDqmSdHvqw"
+        "https://api.mozambiquehe.re/maprotation?version=5&auth=6lfxuOGGI4GDqmSdHvqw"
     );
     const jsFormatData = await jsonFormatData.json();
     getMapApi();
@@ -116,7 +143,5 @@ async function getDataFromApi() {
     setNextArenaMap(jsFormatData);
     setCurrentArenaRankedMap(jsFormatData);
     setNextArenaRankedMap(jsFormatData);
-    getMapApi();
-    setInterval(getMapApi, 1000);
 }
 getDataFromApi();
