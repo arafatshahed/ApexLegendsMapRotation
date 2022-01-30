@@ -1,7 +1,9 @@
+var host = "https://arafatshahed.github.io/ApexLegendsMapRotation/images/assets/";
+
 function getBRImageName(t1) {
     t1 = t1.slice(0, (t1.length - 9));
     var i = t1.indexOf("_") + 1;
-    const t2 = "https://arafatshahed.github.io/ApexLegendsMapRotation/images/assets/" + t1.charAt(0).toUpperCase() + t1.slice(1, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
+    const t2 = host + t1.charAt(0).toUpperCase() + t1.slice(1, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
     //var t3 = "https://apexlegendsstatus.com//assets//maps//" + t2;
     return t2;
 }
@@ -9,7 +11,7 @@ function getBRImageName(t1) {
 function getARImageName(t1) {
     t1 = t1.replaceAll(' ', '_');
     var i = t1.indexOf("_") + 1;
-    const ts = "https://arafatshahed.github.io/ApexLegendsMapRotation/images/assets/" + "Arena_" + t1.slice(0, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
+    const ts = host + "Arena_" + t1.slice(0, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
 
     console.log(ts)
     return ts;
@@ -43,7 +45,7 @@ function setCurrentBRRankMap(jsFormatData) {
     document.getElementById("brRank").innerHTML = jsFormatData.ranked.current.map;
     var cbrImage = jsFormatData.ranked.current.map;
     cbrImage = cbrImage.replaceAll(' ', '_');
-    const t1 = "https://arafatshahed.github.io/ApexLegendsMapRotation/images/assets/" + cbrImage + ".jpg";
+    const t1 = host + cbrImage + ".jpg";
     document.getElementById("rankBR").style.backgroundImage = "url(" + t1 + ")";
 }
 
@@ -86,17 +88,17 @@ async function getMapApi() {
     jsFormatData = await jsonFormatData.json();
 
     document.getElementById("cbrRem").innerHTML = jsFormatData.battle_royale.current.remainingTimer;
-    if (jsFormatData.battle_royale.current.remainingSecs == 0) {
+    if (jsFormatData.battle_royale.current.remainingSecs == 0 || jsFormatData.battle_royale.current.DurationInSecs - jsFormatData.battle_royale.current.remainingSecs < 5) {
         setCurrentBRMap(jsFormatData);
         setNextBRMap(jsFormatData);
     }
     document.getElementById("carRem").innerHTML = jsFormatData.arenas.current.remainingTimer;
-    if (jsFormatData.arenas.current.remainingSecs == 0) {
+    if (jsFormatData.arenas.current.remainingSecs == 0 || jsFormatData.arenas.current.DurationInSecs - jsFormatData.arenas.current.remainingSecs < 5) {
         setCurrentArenaMap(jsFormatData);
         setNextArenaMap(jsFormatData);
     }
     document.getElementById("carrRem").innerHTML = jsFormatData.arenasRanked.current.remainingTimer;
-    if (jsFormatData.arenasRanked.current.remainingSecs == 0) {
+    if (jsFormatData.arenasRanked.current.remainingSecs == 0 || jsFormatData.arenasRanked.current.DurationInSecs - jsFormatData.arenasRanked.current.remainingSecs < 5) {
         setCurrentArenaRankedMap(jsFormatData);
         setNextArenaRankedMap(jsFormatData);
     }
