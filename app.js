@@ -2,6 +2,9 @@ var host = "https://arafatshahed.github.io/ApexLegendsMapRotation/images/assets/
 var ar = 0,
     brc = 0,
     arr = 0;
+var apikeys = ["6lfxuOGGI4GDqmSdHvqw", "m2pbuAyEKQ2X1e8ci96Y", "S37N0Vx3JA4ifDL8unq3", "4PXCb8hs9LUlWHYpOWHW", "EO3newH6HYWxxFb6lQGl", "2RPlQmEyCwN3EuXIXjDc"];
+var apiNum = Math.floor(Math.random() * (apikeys.length - 1));
+console.log(apiNum);
 
 function getBRImageName(t1) {
     t1 = t1.slice(0, (t1.length - 9));
@@ -116,7 +119,7 @@ function updateRem(jsFormatData) {
 
 async function getMapApi() {
     const jsonFormatData = await fetch(
-        "https://api.mozambiquehe.re/maprotation?version=5&auth=6lfxuOGGI4GDqmSdHvqw"
+        "https://api.mozambiquehe.re/maprotation?version=5&auth=" + apikeys[apiNum]
     );
     jsFormatData = await jsonFormatData.json();
     brc = jsFormatData.battle_royale.current.remainingSecs;
@@ -132,10 +135,9 @@ async function getMapApi() {
 }
 async function getDataFromApi() {
     const jsonFormatData = await fetch(
-        "https://api.mozambiquehe.re/maprotation?version=5&auth=6lfxuOGGI4GDqmSdHvqw"
+        "https://api.mozambiquehe.re/maprotation?version=5&auth=" + apikeys[apiNum]
     );
     const jsFormatData = await jsonFormatData.json();
-    getMapApi();
     setCurrentBRMap(jsFormatData);
     setNextBRMap(jsFormatData);
     setCurrentBRRankMap(jsFormatData);
@@ -143,5 +145,6 @@ async function getDataFromApi() {
     setNextArenaMap(jsFormatData);
     setCurrentArenaRankedMap(jsFormatData);
     setNextArenaRankedMap(jsFormatData);
+    getMapApi();
 }
 getDataFromApi();
