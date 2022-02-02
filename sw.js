@@ -1,10 +1,11 @@
-const cacheName = "ApexMapRotation_alpha1.0.2";
+const cacheName = "ApexMapRotation_alpha1.0.3";
 const staticAssets = [
     "./",
     "./index.html",
     "./style.css",
     "./index.js",
     "./app.js",
+    "./apiHelper.js",
     "./images/assets/Arena_Encore.jpg",
     "./images/assets/Arena_Habitat.jpg",
     "./images/assets/Arena_Overflow.jpg",
