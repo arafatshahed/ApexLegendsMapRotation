@@ -1,4 +1,4 @@
-const cacheName = "ApexMapRotation_alpha1.0.4";
+const cacheName = "ApexMapRotation_alpha1.0.5";
 const staticAssets = [
     "./",
     "./index.html",
@@ -6,15 +6,15 @@ const staticAssets = [
     "./index.js",
     "./app.js",
     "./apiHelper.js",
-    "./images/assets/Arena_Encore.jpg",
-    "./images/assets/Arena_Habitat.jpg",
-    "./images/assets/Arena_Overflow.jpg",
-    "./images/assets/Arena_Party_Crasher.jpg",
-    "./images/assets/Arena_Phase_Runner.jpg",
-    "./images/assets/Kings_Canyon.jpg",
-    "./images/assets/Olympus.jpg",
-    "./images/assets/Storm_Point.jpg",
-    "./images/assets/Worlds_Edge.jpg",
+    "./assets/images/Arena_Encore.jpg",
+    "./assets/images/Arena_Habitat.jpg",
+    "./assets/images/Arena_Overflow.jpg",
+    "./assets/images/Arena_Party_Crasher.jpg",
+    "./assets/images/Arena_Phase_Runner.jpg",
+    "./assets/images/Kings_Canyon.jpg",
+    "./assets/images/Olympus.jpg",
+    "./assets/images/Storm_Point.jpg",
+    "./assets/images/Worlds_Edge.jpg",
 
 ];
 

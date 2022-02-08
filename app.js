@@ -6,15 +6,21 @@ var apiKey = getApiKey();
 
 function getBRImageName(t1) {
     t1 = t1.slice(0, (t1.length - 9));
+    var t2
     var i = t1.indexOf("_") + 1;
-    const t2 = "./images/assets/" + t1.charAt(0).toUpperCase() + t1.slice(1, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
+    if (t1.indexOf("_") == -1) {
+        t2 = "./assets/images/" + t1.slice(1, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
+    } else {
+        t2 = "./assets/images/" + t1.charAt(0).toUpperCase() + t1.slice(1, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
+    }
+
     return t2;
 }
 
 function getARImageName(t1) {
     t1 = t1.replaceAll(' ', '_');
     var i = t1.indexOf("_") + 1;
-    const ts = "./images/assets/" + "Arena_" + t1.slice(0, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
+    const ts = "./assets/images/" + "Arena_" + t1.slice(0, i) + t1.charAt(i).toUpperCase() + t1.slice(i + 1, t1.length) + ".jpg";
     console.log(ts)
     return ts;
 }
@@ -42,6 +48,9 @@ function setCurrentBRMap(jsFormatData) {
 }
 
 function setNextBRMap(jsFormatData) {
+    // if (jsFormatData.battle_royale.next.map == jsFormatData.battle_royale.current.map) {
+    //     document.getElementById("nextBR").style.display = "none";
+    // }
     document.getElementById("nbr").innerHTML = jsFormatData.battle_royale.next.map;
     var nbrImage = getBRImageName(jsFormatData.battle_royale.next.code);
     document.getElementById("nextBR").style.backgroundImage = "url(" + nbrImage + ")";
@@ -53,7 +62,7 @@ function setCurrentBRRankMap(jsFormatData) {
     document.getElementById("brRank").innerHTML = jsFormatData.ranked.current.map;
     var cbrImage = jsFormatData.ranked.current.map;
     cbrImage = cbrImage.replaceAll(' ', '_');
-    const t1 = "./images/assets/" + cbrImage + ".jpg";
+    const t1 = "./assets/images/" + cbrImage + ".jpg";
     document.getElementById("rankBR").style.backgroundImage = "url(" + t1 + ")";
 }
 
