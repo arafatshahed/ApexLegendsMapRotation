@@ -134,7 +134,7 @@ async function getMapApi() {
         "https://api.mozambiquehe.re/maprotation?version=5&auth=" + apiKey
     );
     jsFormatData = await jsonFormatData.json();
-    brc = jsFormatData.battle_royale.current.remainingSecs;
+    // brc = jsFormatData.battle_royale.current.remainingSecs;
     ar = jsFormatData.arenas.current.remainingSecs;
     arr = jsFormatData.arenasRanked.current.remainingSecs;
     setInterval(updateRem, 1000, jsFormatData);
@@ -160,3 +160,12 @@ async function getDataFromApi() {
     getMapApi();
 }
 getDataFromApi();
+
+function expand() {
+    var content = document.getElementById("content");
+    if (content.style.display === "block") {
+        content.style.display = "none";
+    } else {
+        content.style.display = "block";
+    }
+}
