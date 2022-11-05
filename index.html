@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:image" content="./assets/homescreen512.png" />
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
@@ -31,7 +32,11 @@
             <div class="card" id="currBR">
                 <h1>Current Battle Royale Map:</h1>
                 <h1 id="cbr"></h1>
-                <p id="cbrRem"></p>
+                <div class="time">
+                    <i class="fa fa-clock" aria-hidden="true"></i>
+                    <p id="cbrRem"></p>
+                </div>
+
                 <p class="interval" id="cbrTime"></p>
             </div>
             <div class="card" id="nextBR">
@@ -43,12 +48,19 @@
             <div class="card" id="rankBR">
                 <h1>Battle Royale Rank Map:</h1>
                 <h1 id="brRank"></h1>
+                <div class="time">
+                    <i class="fa fa-clock" aria-hidden="true"></i>
+                    <p id="cbrRankRem"></p>
+                </div>
             </div>
 
             <div class="card" id="currAR">
                 <h1>Current Arena Map:</h1>
                 <h1 id="car"></h1>
-                <p id="carRem"></p>
+                <div class="time">
+                    <i class="fa fa-clock" aria-hidden="true"></i>
+                    <p id="carRem"></p>
+                </div>
                 <p class="interval" id="carTime"></p>
             </div>
 
@@ -61,7 +73,10 @@
             <div class="card" id="currArRank">
                 <h1>Current Arena Rank Map:</h1>
                 <h1 id="carr"></h1>
-                <p id="carrRem"></p>
+                <div class="time">
+                    <i class="fa fa-clock" aria-hidden="true"></i>
+                    <p id="carrRem"></p>
+                </div>
                 <p class="interval" id="carrTime"></p>
             </div>
             <div class="card" id="nextArRank">
@@ -72,14 +87,14 @@
         </div>
 
     </div>
-    <div class="how-two">
+    <!-- <div class="how-two">
         <button type="button" class="collapsible" onclick="expand()">How to update the app?</button>
         <p class="content" id="content">
             Release from top to refresh/upadate the app. Release from top to refresh/upadate the app. Release from top to refresh/upadate the app. Release from top to refresh/upadate the app. Release from top to refresh/upadate the app. Release from top to refresh/upadate
             the app. Release from top to refresh/upadate the app. Release from top to refresh/upadate the app. Release from top to refresh/upadate the app. Release from top to refresh/upadate the app. Release from top to refresh/upadate the app. Release
             from top to refresh/upadate the app. Release from top to refresh/upadate the app. Release from top to refresh/upadate the app. Release from top to refresh/upadate the app. Release from top to refresh/upadate the app.
         </p>
-    </div>
+    </div> -->
     <footer>
         <div class="myprofile">
             <button>
@@ -101,7 +116,7 @@
 
         <p>Developed By <img class="origin" src="./assets/origin.png" alt="">Banned_Shahed, I would really appricaiate if you star this project on GitHub.</p>
 
-        <p style="font-size: 0.7rem; margin: 0px;">Version: alpha-1.0.5</p>
+        <p style="font-size: 0.7rem; margin: 0px;">Version: beta-1.0.6</p>
     </footer>
 </body>
 
