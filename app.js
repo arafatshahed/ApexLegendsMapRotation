@@ -129,7 +129,7 @@ function updateRem(jsFormatData) {
 
 function toTimeString(seconds) {
     var d = Math.floor(seconds / (3600 * 24));
-    d = d + (d > 0 ? "d " : "") + new Date(brc * 1000).toISOString().substr(11, 8);
+    d = (d > 0 ? d : "") + new Date(brc * 1000).toISOString().substr(11, 8);
     return d
 }
 

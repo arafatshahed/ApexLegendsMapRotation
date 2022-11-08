@@ -1,4 +1,4 @@
-const cacheName = "ApexMapRotation_beta1.15.2";
+const cacheName = "ApexMapRotation_beta1.15.3";
 const staticAssets = [
     "./",
     "./index.html",
