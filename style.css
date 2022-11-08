@@ -14,11 +14,11 @@ body {
 
 .container {
     display: grid;
-    padding: 0 5vw 1vh 5vw;
+    padding: 0 3vw 1vh 3vw;
 }
 
 .how-two {
-    padding: 0 5vw 1vh 5vw;
+    padding: 0 3vw 1vh 3vw;
 }
 
 .collapsible:hover {
@@ -68,7 +68,7 @@ body {
 
 .board {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     color: aliceblue;
     justify-items: center;
@@ -145,7 +145,17 @@ i {
     font-size: 1.6rem;
 }
 
+@media screen and (max-width: 900px) {
+    .board {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 @media screen and (max-width: 600px) {
+    .container {
+        display: grid;
+        padding: 0 5vw 1vh 5vw;
+    }
     .board {
         grid-template-columns: 1fr;
     }
