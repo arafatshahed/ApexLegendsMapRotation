@@ -1,4 +1,4 @@
-const cacheName = "ApexMapRotation_beta1.15.5";
+const cacheName = "ApexMapRotation_beta1.4.1";
 const staticAssets = [
     "./",
     "./index.html",
@@ -16,7 +16,7 @@ const staticAssets = [
     "./assets/images/Storm_Point.jpg",
     "./assets/images/Worlds_Edge.jpg",
     "./assets/images/Broken_Moon.jpg",
-
+    "./assets/images/Arena_Drop_Off.jpg",
 ];
 
 self.addEventListener("install", async(e) => {

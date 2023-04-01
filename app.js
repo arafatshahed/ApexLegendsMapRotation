@@ -1,7 +1,10 @@
 var ar = 0,
     brc = 0,
     arr = 0,
+    battleRoyalRankedRemainingTime = 0,
     isTimerRunning = false;
+
+let jsFormatData;
 
 function getBRImageName(t1) {
     t1 = t1.slice(0, (t1.length - 9));
@@ -37,7 +40,7 @@ function getTime(ms1, ms2) {
     return rs;
 }
 
-function setCurrentBRMap(jsFormatData) {
+function setCurrentBRMap() {
     console.log("setCurrentBRMap");
     document.getElementById("cbr").innerHTML = jsFormatData.battle_royale.current.map;
     var cbrImage = getBRImageName(jsFormatData.battle_royale.current.code);
@@ -46,7 +49,7 @@ function setCurrentBRMap(jsFormatData) {
     document.getElementById("cbrTime").innerHTML = rs;
 }
 
-function setNextBRMap(jsFormatData) {
+function setNextBRMap() {
     // if (jsFormatData.battle_royale.next.map == jsFormatData.battle_royale.current.map) {
     //     document.getElementById("nextBR").style.display = "none";
     // }
@@ -57,7 +60,7 @@ function setNextBRMap(jsFormatData) {
     document.getElementById("nbrTime").innerHTML = rs;
 }
 
-function setCurrentBRRankMap(jsFormatData) {
+function setCurrentBRRankMap() {
     document.getElementById("brRank").innerHTML = jsFormatData.ranked.current.map;
     var cbrImage = jsFormatData.ranked.current.map;
     cbrImage = cbrImage.replaceAll(' ', '_');
@@ -65,7 +68,7 @@ function setCurrentBRRankMap(jsFormatData) {
     document.getElementById("rankBR").style.backgroundImage = "url(" + t1 + ")";
 }
 
-function setCurrentArenaMap(jsFormatData) {
+function setCurrentArenaMap() {
     document.getElementById("car").innerHTML = jsFormatData.arenas.current.map;
     var narImage = getARImageName(jsFormatData.arenas.current.map);
     document.getElementById("currAR").style.backgroundImage = "url(" + narImage + ")";
@@ -81,21 +84,21 @@ function setNextArenaMap(jsFormatData) {
     document.getElementById("narTime").innerHTML = rs;
 }
 
-function setCurrentArenaRankedMap(jsFormatData) {
-    document.getElementById("carr").innerHTML = jsFormatData.arenasRanked.current.map;
-    var narImage = getARImageName(jsFormatData.arenasRanked.current.map);
-    document.getElementById("currArRank").style.backgroundImage = "url(" + narImage + ")";
-    var rs = getTime(jsFormatData.arenasRanked.current.start, jsFormatData.arenasRanked.current.end);
-    document.getElementById("carrTime").innerHTML = rs;
-}
+// function setCurrentArenaRankedMap(jsFormatData) {
+//     document.getElementById("carr").innerHTML = jsFormatData.arenasRanked.current.map;
+//     var narImage = getARImageName(jsFormatData.arenasRanked.current.map);
+//     document.getElementById("currArRank").style.backgroundImage = "url(" + narImage + ")";
+//     var rs = getTime(jsFormatData.arenasRanked.current.start, jsFormatData.arenasRanked.current.end);
+//     document.getElementById("carrTime").innerHTML = rs;
+// }
 
-function setNextArenaRankedMap(jsFormatData) {
-    document.getElementById("narr").innerHTML = jsFormatData.arenasRanked.next.map;
-    var narImage = getARImageName(jsFormatData.arenasRanked.next.map);
-    document.getElementById("nextArRank").style.backgroundImage = "url(" + narImage + ")";
-    var rs = getTime(jsFormatData.arenasRanked.next.start, jsFormatData.arenasRanked.next.end);
-    document.getElementById("narrTime").innerHTML = rs;
-}
+// function setNextArenaRankedMap(jsFormatData) {
+//     document.getElementById("narr").innerHTML = jsFormatData.arenasRanked.next.map;
+//     var narImage = getARImageName(jsFormatData.arenasRanked.next.map);
+//     document.getElementById("nextArRank").style.backgroundImage = "url(" + narImage + ")";
+//     var rs = getTime(jsFormatData.arenasRanked.next.start, jsFormatData.arenasRanked.next.end);
+//     document.getElementById("narrTime").innerHTML = rs;
+// }
 
 function updateRem(jsFormatData) {
     console.log(brc)
@@ -115,14 +118,14 @@ function updateRem(jsFormatData) {
         getDataFromApi();
     }
     ar -= 1;
-    var arrRem = new Date(arr * 1000).toISOString().substr(11, 8);
-    document.getElementById("carrRem").innerHTML = arrRem;
-    if (arr == 0) { // || jsFormatData.arenasRanked.current.DurationInSecs - arr < 5
-        setCurrentArenaRankedMap(jsFormatData);
-        setNextArenaRankedMap(jsFormatData);
-        getDataFromApi();
-    }
-    arr -= 1;
+    // var arrRem = new Date(arr * 1000).toISOString().substr(11, 8);
+    // document.getElementById("carrRem").innerHTML = arrRem;
+    // if (arr == 0) { // || jsFormatData.arenasRanked.current.DurationInSecs - arr < 5
+    //     setCurrentArenaRankedMap(jsFormatData);
+    //     setNextArenaRankedMap(jsFormatData);
+    //     getDataFromApi();
+    // }
+    // arr -= 1;
 
 }
 
@@ -152,14 +155,22 @@ function updateRemainingTime(jsFormatData) {
         getDataFromApi();
     }
     ar -= 1;
-    var arrRem = new Date(arr * 1000).toISOString().substr(11, 8);
-    document.getElementById("carrRem").innerHTML = arrRem;
-    if (arr == 0) { // || jsFormatData.arenasRanked.current.DurationInSecs - arr < 5
+    // var arrRem = new Date(arr * 1000).toISOString().substr(11, 8);
+    // document.getElementById("carrRem").innerHTML = arrRem;
+    // if (arr == 0) { // || jsFormatData.arenasRanked.current.DurationInSecs - arr < 5
+    //     setCurrentArenaRankedMap(jsFormatData);
+    //     setNextArenaRankedMap(jsFormatData);
+    //     getDataFromApi();
+    // }
+    // arr -= 1;
+    var brRankedRemainingTime = new Date(battleRoyalRankedRemainingTime * 1000).toISOString().substr(11, 8);
+    document.getElementById("cbrRankRem").innerHTML = brRankedRemainingTime;
+    if (brRankedRemainingTime == 0) { // || jsFormatData.arenasRanked.current.DurationInSecs - arr < 5
         setCurrentArenaRankedMap(jsFormatData);
         setNextArenaRankedMap(jsFormatData);
         getDataFromApi();
     }
-    arr -= 1;
+    battleRoyalRankedRemainingTime -= 1;
 }
 
 function setRankedRemainingTime(cbrRankRem) {
@@ -180,6 +191,7 @@ async function getMapApi() {
 
     ar = jsFormatData.arenas.current.remainingSecs;
     arr = jsFormatData.arenasRanked.current.remainingSecs;
+    battleRoyalRankedRemainingTime = jsFormatData.ranked.current.remainingSecs;
     if (!isTimerRunning) {
         setInterval(updateRemainingTime, 1000, jsFormatData);
         isTimerRunning = true
@@ -195,14 +207,14 @@ async function getDataFromApi() {
     const jsonFormatData = await fetch(
         "https://api.mozambiquehe.re/maprotation?version=5&auth=" + apiKey
     );
-    const jsFormatData = await jsonFormatData.json();
-    setCurrentBRMap(jsFormatData);
-    setNextBRMap(jsFormatData);
-    setCurrentBRRankMap(jsFormatData);
-    setCurrentArenaMap(jsFormatData);
+    jsFormatData = await jsonFormatData.json();
+    setCurrentBRMap();
+    setNextBRMap();
+    setCurrentBRRankMap();
+    setCurrentArenaMap();
     setNextArenaMap(jsFormatData);
-    setCurrentArenaRankedMap(jsFormatData);
-    setNextArenaRankedMap(jsFormatData);
+    // setCurrentArenaRankedMap(jsFormatData);
+    // setNextArenaRankedMap(jsFormatData);
     getMapApi();
 }
 getDataFromApi();
